@@ -21,6 +21,7 @@ updated = 0
 unchanged = 0
 # Loop until we reach the last page
 while pageNum <= total_pages:
+    print "Page " + str(pageNum) + "of" + str(total_pages)
     data = loadSongListPage(pageNum)
     total_pages = data['total_pages']
     
@@ -32,8 +33,6 @@ while pageNum <= total_pages:
             added += 1
         else:
             unchanged += 1
-    
-    print "Page " + str(pageNum) + "of" + str(total_pages)
     pageNum += 1
 print "Complete.  " + str(added) + " new, " + str(updated) + " updated, and " + str(unchanged) + "unchanged."
 
