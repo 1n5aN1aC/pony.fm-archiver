@@ -21,7 +21,7 @@ updated = 0
 unchanged = 0
 # Loop until we reach the last page
 while pageNum <= total_pages:
-    print "Page " + str(pageNum) + "of" + str(total_pages)
+    print "Page " + str(pageNum) + " of " + str(total_pages)
     data = loadSongListPage(pageNum)
     total_pages = data['total_pages']
     
@@ -32,9 +32,10 @@ while pageNum <= total_pages:
             dict[id] = track
             added += 1
         else:
+            #Check if changed?
             unchanged += 1
     pageNum += 1
-print "Complete.  " + str(added) + " new, " + str(updated) + " updated, and " + str(unchanged) + "unchanged."
+print "Complete.  " + str(added) + " new, " + str(updated) + " updated, and " + str(unchanged) + " unchanged."
 
 # Save the dict back to the pickle
 with open('ponyFMdb.pickle', 'wb') as handle:
