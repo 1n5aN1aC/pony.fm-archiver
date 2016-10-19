@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from BeautifulSoup import BeautifulSoup
-import urllib2, json, cPickle
+import urllib2, json, cPickle, os
 
 #Performs the requesting of the page, and loading soup
 def loadSongListPage(pageNum):
@@ -9,6 +9,12 @@ def loadSongListPage(pageNum):
     page = urllib2.urlopen(reader).read()
     # Convert json text to python dictionary
     return json.loads(page)
+
+# Create pickle if doesn't exist...
+if not os.path.isfile("ponyFMdb.pickle"):
+    with open('ponyFMdb.pickle', 'wb') as handle:
+        dict = {}
+        cPickle.dump(dict, handle)
 
 # Open the pickle, and load it into the dict
 with open('ponyFMdb.pickle', 'rb') as handle:
